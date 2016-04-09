@@ -2,17 +2,17 @@
 
 # file: rpi-pddb.rb
 
-require 'rpi'
+require 'simple_raspberrypi'
 
 
-class RPiPDDB < RPi
+class RPiPDDB < SimpleRaspberryPi
 
   def initialize(x)
     super(x)
   end
   
-  def buzz()
-    self.pin.oscillate 0.0013, duration: 0.2
+  def buzz(khz: 1.3, duration: 0.2)
+    self.pin.oscillate (khz / 1000.0), duration: duration
   end
 end
 
